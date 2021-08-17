@@ -1,0 +1,28 @@
+{
+  "npm.packageManager": "yarn",
+  "editor.rulers": [160],
+  "html.format.wrapLineLength": 160,
+  "html.format.extraLiners": "",
+  "html.format.indentInnerHtml": true,
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.tslint": true
+  },
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "dist": true,
+    "node_modules": true,
+    ".nuxt": true,
+    "coverage": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.semicolons": "remove",
+  "typescript.preferences.quoteStyle": "single"
+}
