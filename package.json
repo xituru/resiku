@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-boilerplate",
+  "name": "resiku-fe-nuxt",
+  "description": "Nuxt Website for Resiku",
   "version": "0.0.1",
   "private": true,
   "license": "UNLICENSED",
