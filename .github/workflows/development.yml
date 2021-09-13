@@ -6,25 +6,51 @@ on:
       - master
 
 jobs:
-  deploy:
-    name: 'Deploy'
-    runs-on: ubuntu-latest
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout 🛎
+        uses: actions/checkout@master
 
-      # Sets the branch name as environment variable
-      - uses: nelonoel/branch-name@v1.0.1
-      - uses: jsmrcaga/action-netlify-deploy@master
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v2.4.0
         with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Get yarn cache directory path 🛠
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache node_modules 📦
+        uses: actions/cache@v2.1.6
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies 👨🏻‍💻
+        run: yarn
+
+      - name: Build 📦
+        run: yarn generate
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy Development from GitHub Actions'
+          alias: ${{ github.head_ref }}
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      # Creates a status check with link to preview
-      - name: Status check
-        uses: Sibz/github-status-action@v1.1.1
-        with:
-          authToken: ${{ secrets.GITHUB_TOKEN }}
-          context: preview
-          state: success
-          target_url: https://rskxtr-dev.netlify.app
+        timeout-minutes: 1
