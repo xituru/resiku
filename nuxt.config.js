@@ -55,6 +55,10 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://color-mode.nuxtjs.org
+    '@nuxtjs/color-mode',
+    // https://github.com/nuxt-community/svg-module
+    '@nuxtjs/svg',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -87,5 +91,9 @@ export default {
         httpEndpoint: 'http://localhost:3000/graphql',
       },
     },
+  },
+
+  colorMode: {
+    classSuffix: '',
   },
 }

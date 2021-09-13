@@ -1,0 +1,15 @@
+.toggle {
+  @apply appearance-none cursor-pointer border h-6 w-12 rounded-full bg-white border-white;
+  --tw-bg-opacity: 1;
+  --tw-border-opacity: 1;
+
+  box-shadow: calc(1.5rem * -1) 0 0 2px hsl(219, 14.1%, 27.8%) inset,
+    0 0 0 2px hsl(219, 14.1%, 27.8%) inset, 0 0 0;
+
+  &:checked {
+    --tw-bg-opacity: 0.2;
+    --tw-border-opacity: 0.2;
+    box-shadow: 1.5rem 0 0 2px hsl(219, 14.1%, 27.8%) inset,
+      0 0 0 2px hsl(219, 14.1%, 27.8%) inset, 0 0 0;
+  }
+}

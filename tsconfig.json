@@ -15,7 +15,13 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "vue-apollo/types"]
+    "types": [
+      "@nuxt/types",
+      "@nuxtjs/axios",
+      "@nuxtjs/color-mode",
+      "@types/node",
+      "vue-apollo/types"
+    ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
