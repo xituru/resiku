@@ -9,7 +9,6 @@
   &:checked {
     --tw-bg-opacity: 0.2;
     --tw-border-opacity: 0.2;
-    box-shadow: 1.5rem 0 0 2px hsl(219, 14.1%, 27.8%) inset,
-      0 0 0 2px hsl(219, 14.1%, 27.8%) inset, 0 0 0;
+    box-shadow: 1.5rem 0 0 1px #fff inset, 0 0 0 1px #fff inset, 0 0 0;
   }
 }

@@ -9,6 +9,7 @@
       xl:col-span-3
       rounded-box
       p-2
+      dark:bg-gray-900
     "
   >
     <div class="flex-none px-2 mx-2">
