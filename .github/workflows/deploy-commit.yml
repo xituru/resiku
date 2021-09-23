@@ -1,17 +1,19 @@
-name: ci
+name: deploy-commit
 
 on:
-  push:
+  workflow_run:
     branches:
       - main
       - master
-  pull_request:
-    branches:
-      - main
-      - master
+    types:
+      - completed
+    workflows:
+      - development-test
 
 jobs:
-  ci:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -45,8 +47,25 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn
 
-      - name: Run linter 👀
-        run: yarn lint
+      - name: Build 📦
+        run: yarn generate
 
-      - name: Run tests 🧪
-        run: yarn test
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy Development from GitHub Actions'
+          production-deploy: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+
+      - name: Status check
+        uses: Sibz/github-status-action@v1.1.1
+        with:
+          authToken: ${{ secrets.GITHUB_TOKEN }}
+          context: Netlify preview
+          state: success
+          target_url: https://${{ secrets.NETLIFY_SITE_NAME }}.netlify.app
