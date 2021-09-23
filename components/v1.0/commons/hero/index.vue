@@ -7,4 +7,3 @@
 </template>
 
 <script lang="ts" src="./index.controller.ts"></script>
-<style lang="scss" scoped src="./index.scss"></style>
