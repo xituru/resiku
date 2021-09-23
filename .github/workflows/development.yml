@@ -1,9 +1,6 @@
 name: development
 
 on:
-  push:
-    branches:
-      - master
   workflow_run:
     types:
       - completed
