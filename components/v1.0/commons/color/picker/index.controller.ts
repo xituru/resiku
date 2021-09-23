@@ -1,7 +1,7 @@
-import IconDark from '@/assets/icons/dark.svg?inline'
-import IconLight from '@/assets/icons/light.svg?inline'
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
+import IconDark from '@/assets/icons/dark.svg?inline'
+import IconLight from '@/assets/icons/light.svg?inline'
 
 @Component({
   components: {

@@ -1,14 +1,5 @@
 <template>
-  <footer
-    class="
-      footer
-      p-10
-      bg-base-200
-      text-base-content
-      bg-gray-100
-      dark:bg-gray-900
-    "
-  >
+  <footer class="p-10 footer text-base-content bg-gray-100 dark:bg-gray-900">
     <div>
       <div class="flex items-center">
         <icon-resiku class="w-12 h-12" />

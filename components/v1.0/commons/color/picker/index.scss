@@ -1,5 +1,6 @@
 .toggle {
   @apply appearance-none cursor-pointer border h-6 w-12 rounded-full bg-white border-white;
+
   --tw-bg-opacity: 1;
   --tw-border-opacity: 1;
 
@@ -9,6 +10,7 @@
   &:checked {
     --tw-bg-opacity: 0.2;
     --tw-border-opacity: 0.2;
+
     box-shadow: 1.5rem 0 0 1px #fff inset, 0 0 0 1px #fff inset, 0 0 0;
   }
 }

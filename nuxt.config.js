@@ -59,6 +59,8 @@ export default {
     '@nuxtjs/color-mode',
     // https://github.com/nuxt-community/svg-module
     '@nuxtjs/svg',
+    // https://github.com/nuxt-community/style-resources-module
+    '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -95,5 +97,9 @@ export default {
 
   colorMode: {
     classSuffix: '',
+  },
+
+  tailwindcss: {
+    cssPath: '~/assets/styles/main.scss',
   },
 }
