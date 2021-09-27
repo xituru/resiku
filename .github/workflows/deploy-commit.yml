@@ -63,7 +63,7 @@ jobs:
         timeout-minutes: 1
 
       - name: Status check
-        uses: Sibz/github-status-action@v1.1.5
+        uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: Netlify preview
