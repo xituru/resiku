@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.0",
-    "@commitlint/cli": "^13.1.0",
+    "@commitlint/cli": "^13.2.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@graphql-codegen/cli": "^2.2.0",
     "@graphql-codegen/typescript": "^2.2.2",
