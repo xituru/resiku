@@ -1,0 +1,14 @@
+.card {
+  &-success {
+    @apply ring-green-500;
+
+    .card-title {
+      @apply bg-green-500;
+    }
+  }
+
+  &-title,
+  &-body {
+    @apply px-5 py-2.5;
+  }
+}

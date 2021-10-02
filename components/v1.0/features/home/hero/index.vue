@@ -1,8 +1,8 @@
 <template>
   <comm-hero>
-    <div class="max-w-md">
-      <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-      <p class="mb-5">
+    <div class="max-w-xs md:max-w-md">
+      <h1 class="mb-5 text-5xl font-bold text-center">Hello there</h1>
+      <p class="mb-5 text-center">
         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
         id nisi.
@@ -39,6 +39,7 @@
           Search
         </button>
       </div>
+      <app-receipt-card v-if="false" class="max-w-xs mx-auto mt-10" />
     </div>
   </comm-hero>
 </template>

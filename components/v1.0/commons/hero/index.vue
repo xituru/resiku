@@ -1,6 +1,6 @@
 <template>
-  <div class="hero min-h-screen">
-    <div class="text-center hero-content">
+  <div class="hero">
+    <div class="hero-content">
       <slot />
     </div>
   </div>
