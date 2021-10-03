@@ -1,0 +1,13 @@
+.footer {
+  @apply text-sm leading-5;
+
+  &-title {
+    @apply font-bold mb-2 opacity-50 uppercase;
+  }
+}
+
+@media (min-width: 48rem) {
+  .footer {
+    @apply grid-flow-col;
+  }
+}

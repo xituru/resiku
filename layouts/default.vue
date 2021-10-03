@@ -8,8 +8,8 @@
       min-h-screen
     "
   >
-    <app-navbar />
+    <comm-navbar />
     <nuxt class="mx-auto p-4 flex-1" />
-    <app-footer />
+    <comm-footer />
   </div>
 </template>
