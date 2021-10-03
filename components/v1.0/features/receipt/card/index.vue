@@ -25,6 +25,14 @@
             Button
           </button>
         </div>
+        <comm-timeline
+          class="mt-5"
+          :activities="
+            new Array(5)
+              .fill(0)
+              .map(() => ({ description: 'Description', date: new Date() }))
+          "
+        />
       </div>
     </div>
   </div>
