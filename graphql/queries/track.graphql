@@ -1,5 +1,5 @@
 query Track($awb: String!, $courier: Courier) {
-  tracking(awb: $awb, courier: $courier) {
+  Track(awb: $awb, courier: $courier) {
     status
     summary {
       awb
