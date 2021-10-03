@@ -1,5 +1,5 @@
-import Component from 'nuxt-class-component'
-import Vue from 'vue'
+import Component, { mixins } from 'nuxt-class-component'
+import DateFn from '~/mixins/date-fn'
 
 @Component({
   props: {
@@ -9,4 +9,4 @@ import Vue from 'vue'
     },
   },
 })
-export default class Timeline extends Vue {}
+export default class Timeline extends mixins(DateFn) {}

@@ -34,7 +34,7 @@
           class="ml-7 text-xs"
           :class="[[index === 0 ? 'text-green-500' : 'text-gray-400']]"
         >
-          {{ (activity || {}).date }}
+          {{ formatDate((activity || {}).date, 'EEEE, dd MMM yyyy hh:mm') }}
         </div>
       </li>
     </ul>
