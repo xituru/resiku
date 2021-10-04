@@ -1,9 +1,14 @@
-query Track($awb: String!, $courier: Courier) {
+query Track($awb: String!, $courier: CourierCode) {
   Track(awb: $awb, courier: $courier) {
     status
     summary {
       awb
-      courier
+      courier {
+        code
+        name
+        description
+        extraInfo
+      }
       service
       date
       desc
