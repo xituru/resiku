@@ -1,0 +1,17 @@
+query Courier($code: CourierCode) {
+  Courier(code: $code) {
+    code
+    name
+    description
+    extraInfo
+  }
+}
+
+query AvailabeCourier {
+  AvailableCourier {
+    code
+    name
+    description
+    extraInfo
+  }
+}

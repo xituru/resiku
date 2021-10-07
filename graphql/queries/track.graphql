@@ -1,24 +1,24 @@
 query Track($awb: String!, $courier: CourierCode) {
   Track(awb: $awb, courier: $courier) {
-    status
-    summary {
-      awb
-      courier {
-        code
-        name
-        description
-        extraInfo
-      }
-      service
-      date
-      desc
-      amount
-      weight
-    }
     history {
       date
       desc
       location
+    }
+    status
+    summary {
+      awb
+      amount
+      courier {
+        code
+        description
+        extraInfo
+        name
+      }
+      date
+      desc
+      service
+      weight
     }
   }
 }
