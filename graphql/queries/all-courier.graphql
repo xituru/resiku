@@ -1,0 +1,8 @@
+{
+  AvailableCourier {
+    code
+    name
+    description
+    extraInfo
+  }
+}

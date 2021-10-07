@@ -1,10 +1,6 @@
 <template>
   <div class="flex flex-col flex-nowrap">
-    <app-home-hero
-      class="flex-1"
-      title="Hello there"
-      description="Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et aid nisi."
-    >
+    <app-home-hero class="flex-1" :title="title">
       <div class="relative">
         <input
           type="text"
@@ -42,4 +38,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./index.controller.ts"></script>
+<script lang="ts" src="./_id.controller.ts"></script>

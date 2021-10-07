@@ -1,5 +1,15 @@
 <template>
-  <footer class="p-10 footer text-base-content bg-gray-100 dark:bg-gray-900">
+  <footer
+    class="
+      p-10
+      footer
+      text-base-content
+      bg-gray-100
+      dark:bg-gray-900
+      space-y-5
+      md:space-y-0
+    "
+  >
     <div>
       <div class="flex items-center">
         <icon-resiku class="w-12 h-12" />
@@ -9,10 +19,18 @@
     </div>
     <div>
       <span class="footer-title">Services</span>
-      <a class="link link-hover">Branding</a>
-      <a class="link link-hover">Design</a>
-      <a class="link link-hover">Marketing</a>
-      <a class="link link-hover">Advertisement</a>
+      <template v-if="AvailableCourier">
+        <div class="grid grid-cols-2">
+          <nuxt-link
+            v-for="courier in AvailableCourier"
+            :key="getProp(courier, 'code')"
+            class="link link-hover"
+            :to="generateSingleTrackingUrl(getProp(courier, 'code'))"
+          >
+            Lacak Resi {{ getProp(courier, 'name') }}
+          </nuxt-link>
+        </div>
+      </template>
     </div>
     <div>
       <span class="footer-title">Company</span>

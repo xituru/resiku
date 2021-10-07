@@ -1,9 +1,13 @@
+declare module '*.gql' {
+  import { DocumentNode } from 'graphql'
 
-declare module '*/tracking.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const Track: DocumentNode;
-
-  export default defaultDocument;
+  const content: DocumentNode
+  export default content
 }
-    
+
+declare module '*.graphql' {
+  import { DocumentNode } from 'graphql'
+
+  const content: DocumentNode
+  export default content
+}

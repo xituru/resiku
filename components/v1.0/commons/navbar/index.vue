@@ -11,11 +11,15 @@
     "
   >
     <div class="px-2 mx-2 navbar-start">
-      <span class="text-lg font-bold"> Nuxt </span>
+      <nuxt-link to="/" class="text-lg font-bold capitalize">
+        <h1>Resiku</h1>
+      </nuxt-link>
     </div>
     <div class="hidden px-2 mx-2 navbar-center lg:flex">
-      <div class="flex items-stretch space-x-1.5 font-bold">
-        <a
+      <div class="flex items-stretch space-x-1.5 font-bold" v-if="false">
+        <!-- TODO: Decide list item navbar -->
+        <nuxt-link
+          to="/"
           class="
             btn btn-ghost btn-sm
             rounded-btn
@@ -24,7 +28,7 @@
           "
         >
           Home
-        </a>
+        </nuxt-link>
         <a
           class="
             btn btn-ghost btn-sm
@@ -39,12 +43,14 @@
     </div>
     <div class="navbar-end">
       <button
+        v-if="false"
         class="
           btn btn-square btn-ghost
           hover:bg-gray-300 hover:bg-opacity-80
           dark:hover:bg-gray-500
         "
       >
+        <!-- TODO: Decide is the site needs notification? -->
         <icon-notification />
       </button>
       <button class="btn btn-ghost">

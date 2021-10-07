@@ -13,8 +13,7 @@
     "lint:style": "stylelint \"**/*.{vue,css,scss}\" --ignore-path .gitignore",
     "prepare": "husky install",
     "lint": "yarn lint:js && yarn lint:style",
-    "test": "jest",
-    "generate:graphql": "graphql-codegen --config codegen.yml"
+    "test": "jest"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
@@ -31,10 +30,6 @@
     "@babel/eslint-parser": "^7.15.7",
     "@commitlint/cli": "^13.2.0",
     "@commitlint/config-conventional": "^13.2.0",
-    "@graphql-codegen/cli": "^2.2.0",
-    "@graphql-codegen/typescript": "^2.2.2",
-    "@graphql-codegen/typescript-graphql-files-modules": "^2.1.0",
-    "@graphql-codegen/typescript-operations": "^2.1.5",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/color-mode": "^2.1.1",
