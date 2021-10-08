@@ -18,7 +18,7 @@
       </nuxt-link>
     </div>
     <div class="hidden px-2 mx-2 navbar-center lg:flex">
-      <div class="flex items-stretch space-x-1.5 font-bold" v-if="false">
+      <div v-if="false" class="flex items-stretch space-x-1.5 font-bold">
         <!-- TODO: Decide list item navbar -->
         <nuxt-link
           to="/"

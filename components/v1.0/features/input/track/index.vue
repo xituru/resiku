@@ -1,17 +1,9 @@
 <template>
   <div class="relative">
     <input
+      ref="input"
       type="text"
       :placeholder="placeholder"
-      @blur="onBlur"
-      @change="onChange"
-      @click="onClick"
-      @focus="onFocus"
-      @input="onInput"
-      @keydown="onKeyDown"
-      @keyup="onKeyUp"
-      @keypress="onKeyPress"
-      ref="input"
       class="
         w-full
         pr-16
@@ -22,6 +14,14 @@
         rounded-full
         bg-transparent
       "
+      @blur="onBlur"
+      @change="onChange"
+      @click="onClick"
+      @focus="onFocus"
+      @input="onInput"
+      @keydown="onKeyDown"
+      @keyup="onKeyUp"
+      @keypress="onKeyPress"
     />
     <button
       class="
