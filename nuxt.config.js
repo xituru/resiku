@@ -90,7 +90,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_HTTP_ENDPOINT,
+        httpEndpoint: process.env.GRAPHQL_HTTP_ENDPOINT || 'http://localhost',
       },
     },
   },
