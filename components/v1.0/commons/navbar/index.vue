@@ -12,7 +12,9 @@
   >
     <div class="px-2 mx-2 navbar-start">
       <nuxt-link to="/" class="text-lg font-bold capitalize">
-        <h1>Resiku</h1>
+        <div class="flex items-center">
+          <icon-resiku class="w-28 h-12" />
+        </div>
       </nuxt-link>
     </div>
     <div class="hidden px-2 mx-2 navbar-center lg:flex">

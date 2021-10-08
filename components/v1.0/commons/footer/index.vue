@@ -10,12 +10,16 @@
       md:space-y-0
     "
   >
-    <div>
+    <div class="max-w-0 sm:max-w-sm">
       <div class="flex items-center">
-        <icon-resiku class="w-12 h-12" />
-        <span class="font-bold text-2xl">nuxt</span>
+        <icon-resiku class="w-24 h-12" />
       </div>
-      <p>Company Ltd. <br />Providing reliable tech since 2004</p>
+      <p>
+        <nuxt-link to="/" class="hover:underline focus:underline">
+          Resiku.net
+        </nuxt-link>
+        <br />Platform digital untuk melacak lokasi terakhir paket
+      </p>
     </div>
     <div>
       <span class="footer-title">Services</span>
@@ -32,14 +36,16 @@
         </div>
       </template>
     </div>
-    <div>
+    <div v-if="false">
+      <!-- TODO: activate this when company information is ready -->
       <span class="footer-title">Company</span>
       <a class="link link-hover">About us</a>
       <a class="link link-hover">Contact</a>
       <a class="link link-hover">Jobs</a>
       <a class="link link-hover">Press kit</a>
     </div>
-    <div>
+    <div v-if="false">
+      <!-- TODO: activate this when legal information is ready -->
       <span class="footer-title">Legal</span>
       <a class="link link-hover">Terms of use</a>
       <a class="link link-hover">Privacy policy</a>

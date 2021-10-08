@@ -1,5 +1,5 @@
 import Component, { mixins } from 'nuxt-class-component'
-import IconResiku from '~/assets/icons/resiku.svg?inline'
+import IconResiku from '~/assets/icons/resiku-full.svg?inline'
 import availableCourier from '~/graphql/queries/all-courier.graphql'
 import GetProp from '~/mixins/get-prop'
 
