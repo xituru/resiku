@@ -1,5 +1,5 @@
 <template>
-  <div v-if="activities && Array.isArray(activities)">
+  <div v-if="isArray(activities)">
     <ul class="list-none m-0 p-0">
       <li
         v-for="(activity, index) in activities"
@@ -27,14 +27,19 @@
               'text-green-500': index === 0,
             }"
           >
-            {{ (activity || {}).description || 'No Description' }}
+            {{ getProp(activity, 'content', 'No Description') }}
           </div>
         </div>
         <div
           class="ml-7 text-xs"
           :class="[[index === 0 ? 'text-green-500' : 'text-gray-400']]"
         >
-          {{ formatDate((activity || {}).date, 'EEEE, dd MMM yyyy hh:mm') }}
+          {{
+            formatDate(
+              toDate(getProp(activity, 'date')),
+              'EEEE, dd MMMM yyyy hh:mm'
+            )
+          }}
         </div>
       </li>
     </ul>

@@ -14,14 +14,7 @@
         rounded-full
         bg-transparent
       "
-      @blur="onBlur"
-      @change="onChange"
-      @click="onClick"
-      @focus="onFocus"
-      @input="onInput"
-      @keydown="onKeyDown"
-      @keyup="onKeyUp"
-      @keypress="onKeyPress"
+      v-on="inputTrackListeners"
     />
     <button
       class="

@@ -1,8 +1,15 @@
 <template>
   <div class="flex flex-col flex-nowrap">
     <app-home-hero class="flex-1" :title="title">
-      <app-input-track />
-      <app-receipt-card v-if="false" class="max-w-xs mx-auto mt-10" />
+      <app-input-track v-model="awb" />
+      <app-receipt-card
+        v-if="isObject(Track)"
+        class="max-w-xs mx-auto mt-10"
+        :awb="getProp(Track, 'summary.awb')"
+        :code="getProp(Track, 'summary.courier.code')"
+        :checkpoints="trackToTimeline(Track)"
+        :status="getProp(Track, 'status')"
+      />
     </app-home-hero>
   </div>
 </template>

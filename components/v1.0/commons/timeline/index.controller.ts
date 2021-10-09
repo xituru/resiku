@@ -1,5 +1,7 @@
 import Component, { mixins } from 'nuxt-class-component'
 import DateFn from '~/mixins/date-fn'
+import GetProp from '~/mixins/get-prop'
+import IsArray from '~/mixins/is-array'
 
 @Component({
   props: {
@@ -9,4 +11,4 @@ import DateFn from '~/mixins/date-fn'
     },
   },
 })
-export default class Timeline extends mixins(DateFn) {}
+export default class Timeline extends mixins(DateFn, IsArray, GetProp) {}

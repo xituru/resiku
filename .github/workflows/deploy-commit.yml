@@ -16,6 +16,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
+    env:
+      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.GRAPHQL_HTTP_ENDPOINT }}
+
     strategy:
       matrix:
         os: [ubuntu-latest]

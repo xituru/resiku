@@ -1,6 +1,6 @@
 import isObject from './is-object'
 
-const get = (dirtyObj: any, path: string, defaultValue = undefined) => {
+const get = (dirtyObj: any, path: string, defaultValue: any = undefined) => {
   const obj = (isObject(dirtyObj) && dirtyObj) || {}
 
   const travel = (regexp: RegExp) =>

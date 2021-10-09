@@ -16,9 +16,11 @@
       </div>
       <p>
         <nuxt-link to="/" class="hover:underline focus:underline">
-          Resiku.net
+          &copy; 2021 Resiku.net
         </nuxt-link>
-        <br />Platform digital untuk melacak lokasi terakhir paket
+        <br />Platform digital untuk melacak lokasi terakhir paket secara cepat
+        dan akurat, support banyak ekspedisi, dilengkapi fitur multi tracking,
+        auto tracking, dan tracking page.
       </p>
     </div>
     <div>

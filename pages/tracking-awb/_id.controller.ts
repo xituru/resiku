@@ -2,6 +2,8 @@ import Component, { mixins } from 'nuxt-class-component'
 import Courier from '~/graphql/queries/courier.graphql'
 import GetProp from '~/mixins/get-prop'
 import IsObject from '~/mixins/is-object'
+import TrackingService from '~/mixins/services/tracking'
+import TrackToTimeline from '~/mixins/track-to-timeline'
 
 @Component({
   apollo: {
@@ -18,8 +20,18 @@ import IsObject from '~/mixins/is-object'
       title: (this as TrackingAwbDetailPage).title,
     }
   },
+  data() {
+    return {
+      courier: String(this.$route.params.id || null).toUpperCase(),
+    }
+  },
 })
-export default class TrackingAwbDetailPage extends mixins(GetProp, IsObject) {
+export default class TrackingAwbDetailPage extends mixins(
+  TrackingService,
+  GetProp,
+  IsObject,
+  TrackToTimeline
+) {
   get title() {
     return !!this.$data.Courier &&
       (this as TrackingAwbDetailPage).isObject(this.$data.Courier)

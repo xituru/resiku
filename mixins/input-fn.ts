@@ -34,6 +34,20 @@ export class InputFn extends Vue {
   onClick(event: InputEvent) {
     this.$emit('click', event)
   }
+
+  get inputListeners() {
+    return {
+      ...this.$listeners,
+      input: this.onInput,
+      change: this.onChange,
+      Focus: this.onFocus,
+      Blur: this.onBlur,
+      onKeyDown: this.onKeyDown,
+      KeyPress: this.onKeyPress,
+      KeyUp: this.onKeyUp,
+      click: this.onClick,
+    }
+  }
 }
 
 export default InputFn

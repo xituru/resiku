@@ -18,7 +18,24 @@ export default class InputTrack extends mixins(InputFn) {
     input: HTMLInputElement
   }
 
+  get inputTrackListeners() {
+    return {
+      ...this.inputListeners,
+      input: () => {},
+      search: (event: InputEvent) => {
+        const { value } = <HTMLInputElement>event.target
+
+        if (typeof value !== 'string') return
+        if (!value) return
+        if (String(value || '').length <= 5) return
+
+        this.$emit('search', value)
+        this.$emit('input', value)
+      },
+    }
+  }
+
   onSearch() {
-    this.$refs.input.dispatchEvent(new Event('change'))
+    this.$refs.input.dispatchEvent(new Event('search'))
   }
 }
