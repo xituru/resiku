@@ -12,13 +12,20 @@ import Track from '~/graphql/queries/track.graphql'
           courier: this.$data.courier,
         }
       },
+      skip() {
+        return this.$data.skipQuery
+      },
     },
   },
   data() {
     return {
       awb: '',
       courier: null,
+      skipQuery: true,
     }
+  },
+  mounted() {
+    this.$data.skip = false
   },
 })
 export class TrackingService extends Vue {
