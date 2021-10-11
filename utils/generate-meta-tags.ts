@@ -36,10 +36,7 @@ export const generateMetaTags = (meta?: MetaOption) => {
     {
       hid: 'og:title',
       property: 'og:title',
-      content:
-        (meta && meta.title) ||
-        'Kirim Paket, Barang & Kargo dengan Berbagai Kurir Seluruh Indonesia | ' +
-          process.env.SITE_TITLE,
+      content: (meta && meta.title) || process.env.SITE_TITLE,
     },
     {
       hid: 'og:description',
@@ -59,10 +56,7 @@ export const generateMetaTags = (meta?: MetaOption) => {
     {
       hid: 'twitter:title',
       name: 'twitter:title',
-      content:
-        (meta && meta.title) ||
-        'Kirim Paket, Barang & Kargo dengan Berbagai Kurir Seluruh Indonesia | ' +
-          process.env.SITE_TITLE,
+      content: (meta && meta.title) || process.env.SITE_TITLE,
     },
     {
       hid: 'twitter:description',
