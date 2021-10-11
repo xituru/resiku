@@ -25,7 +25,7 @@ import Track from '~/graphql/queries/track.graphql'
     }
   },
   mounted() {
-    this.$data.skip = false
+    this.$data.skipQuery = false
   },
 })
 export class TrackingService extends Vue {

@@ -18,6 +18,7 @@ jobs:
 
     env:
       GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
+      APP_TITLE: ${{ secrets.RESIKU_TITLE }}
 
     strategy:
       matrix:
