@@ -9,24 +9,24 @@ import TrackToTimeline from '~/mixins/track-to-timeline'
   apollo: {
     Courier: {
       query: Courier,
-      prefetch: ({ route }) => ({ id: route.params.id }),
+      prefetch: ({ route }) => ({ id: route.params.courier }),
       variables() {
-        return { code: String(this.$route.params.id).toUpperCase() }
+        return { code: String(this.$route.params.courier).toUpperCase() }
       },
     },
   },
   head() {
     return {
-      title: (this as TrackingAwbDetailPage).title,
+      title: (this as TrackingAwbCourierPage).title,
     }
   },
   data() {
     return {
-      courier: String(this.$route.params.id || null).toUpperCase(),
+      courier: String(this.$route.params.courier || null).toUpperCase(),
     }
   },
 })
-export default class TrackingAwbDetailPage extends mixins(
+export default class TrackingAwbCourierPage extends mixins(
   TrackingService,
   GetProp,
   IsObject,
@@ -34,8 +34,8 @@ export default class TrackingAwbDetailPage extends mixins(
 ) {
   get title() {
     return !!this.$data.Courier &&
-      (this as TrackingAwbDetailPage).isObject(this.$data.Courier)
-      ? `Lacak Resi ${(this as TrackingAwbDetailPage).getProp(
+      (this as TrackingAwbCourierPage).isObject(this.$data.Courier)
+      ? `Lacak Resi ${(this as TrackingAwbCourierPage).getProp(
           this.$data.Courier,
           'name'
         )}`
