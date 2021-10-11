@@ -10,23 +10,25 @@
       md:space-y-0
     "
   >
-    <div class="max-w-0 sm:max-w-sm">
+    <div class="sm:max-w-sm">
       <div class="flex items-center">
         <icon-resiku class="w-24 h-12" />
       </div>
       <p>
         <nuxt-link to="/" class="hover:underline focus:underline">
-          &copy; 2021 Resiku.net
+          &copy; 2021
+          {{
+            String(getProp($config, 'site.url', '')).replace(/https?:\/\//, '')
+          }}
         </nuxt-link>
-        <br />Platform digital untuk melacak lokasi terakhir paket secara cepat
-        dan akurat, support banyak ekspedisi, dilengkapi fitur multi tracking,
-        auto tracking, dan tracking page.
+        <br />
+        {{ getProp($config, 'site.description') }}
       </p>
     </div>
     <div>
       <span class="footer-title">Services</span>
       <template v-if="AvailableCourier">
-        <div class="grid grid-cols-2">
+        <div class="grid sm:grid-cols-2">
           <nuxt-link
             v-for="courier in AvailableCourier"
             :key="getProp(courier, 'code')"

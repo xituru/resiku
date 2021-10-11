@@ -18,7 +18,12 @@ import TrackToTimeline from '~/mixins/track-to-timeline'
   },
   head() {
     return {
-      title: (this as TrackingAwbDetailPage).title,
+      title: [
+        (this as TrackingAwbDetailPage).title,
+        (this as GetProp).getProp(this.$config, 'site.title'),
+      ]
+        .filter((title) => !!title)
+        .join(' - '),
     }
   },
   data() {

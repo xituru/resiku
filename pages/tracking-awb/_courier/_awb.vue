@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col flex-nowrap">
-    <app-home-hero class="flex-1">
+    <app-home-hero class="flex-1" title="">
       <app-receipt-card
         v-if="isObject(Track)"
         class="max-w-xs mx-auto mt-10"

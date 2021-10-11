@@ -104,4 +104,13 @@ export default {
   tailwindcss: {
     cssPath: '~/assets/styles/main.scss',
   },
+
+  publicRuntimeConfig: {
+    site: {
+      title: process.env.SITE_TITLE,
+      description: process.env.SITE_DESCRIPTION,
+      url: process.env.SITE_URL,
+      image: process.env.SITE_IMAGE,
+    },
+  },
 }
