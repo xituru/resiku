@@ -1,3 +1,4 @@
+import generateIconTags from './utils/generate-icon-tags'
 import generateMetaTags from './utils/generate-meta-tags'
 
 export default {
@@ -6,14 +7,28 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: {
+      lang: 'id-ID',
+    },
     title: process.env.SITE_TITLE || 'Document',
     meta: [
       ...generateMetaTags(),
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'format-detection', content: 'telephone=no' },
+      { property: 'og:image:width', content: '740' },
+      { property: 'og:image:height', content: '300' },
+      { name: 'twitter:site', content: '@resiku' },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      ...generateIconTags('/assets/', 'favicon', 'apple-touch-icons/Icon'),
+      {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: process.env.SITE_URL,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
