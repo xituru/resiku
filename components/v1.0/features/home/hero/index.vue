@@ -1,6 +1,6 @@
 <template>
   <comm-hero>
-    <div class="max-w-xs md:max-w-md">
+    <div class="max-w-screen-sm lg:max-w-lg">
       <h1 class="mb-5 text-5xl font-bold text-center">{{ title }}</h1>
       <p v-if="!!description" class="mb-5 text-center">
         {{ description }}

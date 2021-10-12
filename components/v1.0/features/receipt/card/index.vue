@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-xl max-w-xs md:max-w-md w-full">
+  <div class="shadow-xl">
     <div class="card card-success bordered ring rounded">
       <h2 class="card-title uppercase font-semibold flex flex-row items-center">
         <span class="flex-1">{{ status }}</span>
@@ -28,11 +28,58 @@
             Detail
           </button>
         </div>
-        <comm-timeline
-          v-if="!!expanded && isArray(checkpoints)"
-          class="mt-5"
-          :activities="isArray(checkpoints) ? checkpoints : []"
-        />
+        <div v-if="!!expanded">
+          <div class="flex flex-row space-x-2 mt-6">
+            <div class="w-1/3">
+              <h3 class="font-semibold uppercase">{{ shipper }}</h3>
+              <span class="text-gray-400">{{ origin }}</span>
+            </div>
+            <div class="w-1/3 relative">
+              <div
+                class="
+                  divider
+                  border-b-2 border-gray-400
+                  divider
+                  absolute
+                  w-full
+                  top-2/3
+                  z-0
+                "
+              ></div>
+              <div
+                class="
+                  divider
+                  border-b-2 border-dashed border-gray-400
+                  divider
+                  absolute
+                  w-full
+                  bottom-3.5
+                "
+              ></div>
+              <div
+                class="
+                  divider
+                  border-b-2 border-gray-400
+                  divider
+                  absolute
+                  w-full
+                  z-0
+                  -bottom-0.5
+                "
+              ></div>
+              <icon-truck class="w-20 h-20 mx-auto z-10 relative" />
+            </div>
+            <div class="w-1/3">
+              <h3 class="font-semibold uppercase">{{ receiver }}</h3>
+              <span class="text-gray-400">{{ destination }}</span>
+            </div>
+          </div>
+          <comm-timeline
+            v-if="isArray(checkpoints)"
+            class="mt-5"
+            :activities="isArray(checkpoints) ? checkpoints : []"
+          />
+        </div>
       </div>
     </div>
   </div>

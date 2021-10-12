@@ -1,7 +1,11 @@
 import Component, { mixins } from 'nuxt-class-component'
+import IconTruck from '~/assets/icons/truck.svg?inline'
 import IsArray from '~/mixins/is-array'
 
 @Component({
+  components: {
+    IconTruck,
+  },
   props: {
     awb: String,
     code: String,
@@ -14,6 +18,10 @@ import IsArray from '~/mixins/is-array'
       type: Boolean,
       default: false,
     },
+    shipper: String,
+    receiver: String,
+    origin: String,
+    destination: String,
   },
   data() {
     return {

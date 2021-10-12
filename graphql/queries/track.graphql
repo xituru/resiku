@@ -1,5 +1,11 @@
 query Track($awb: String!, $courier: CourierCode) {
   Track(awb: $awb, courier: $courier) {
+    detail {
+      shipper
+      origin
+      receiver
+      destination
+    }
     history {
       date
       desc
@@ -8,17 +14,9 @@ query Track($awb: String!, $courier: CourierCode) {
     status
     summary {
       awb
-      amount
       courier {
         code
-        description
-        extraInfo
-        name
       }
-      date
-      desc
-      service
-      weight
     }
   }
 }
