@@ -13,3 +13,5 @@
     <comm-footer />
   </div>
 </template>
+
+<script lang="ts" src="./default.controller.ts"></script>

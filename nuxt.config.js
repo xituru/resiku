@@ -128,6 +128,11 @@ export default {
       url: process.env.SITE_URL,
       image: process.env.SITE_IMAGE,
     },
+    google: {
+      ua: process.env.GOOGLE_ANALYTICS_ID,
+      gads: process.env.GOOGLE_ADS_ID,
+      ga4: process.env.GOOGLE_GA4_ID,
+    },
   },
 
   'google-gtag': {
