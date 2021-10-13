@@ -24,7 +24,7 @@ jobs:
       SITE_URL: ${{ secrets.RESIKU_URL }}
       GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
       GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
-      GOGGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
+      GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
 
     strategy:
       matrix:
