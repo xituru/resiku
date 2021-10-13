@@ -87,6 +87,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
+    '@nuxtjs/google-gtag',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -127,5 +128,29 @@ export default {
       url: process.env.SITE_URL,
       image: process.env.SITE_IMAGE,
     },
+  },
+
+  'google-gtag': {
+    id: process.env.GOOGLE_ANALYTICS_ID,
+    config: {
+      anonymize_ip: true,
+      send_page_view: false,
+    },
+    debug: true,
+    disableAutoPageTrack: false,
+    additionalAccounts: [
+      {
+        id: process.env.GOOGLE_ADS_ID,
+        config: {
+          send_page_view: false,
+        },
+      },
+      {
+        id: process.env.GOOGLE_GA4_ID,
+        config: {
+          send_page_view: true,
+        },
+      },
+    ],
   },
 }
