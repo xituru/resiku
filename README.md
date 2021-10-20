@@ -16,7 +16,6 @@
 Todo:
 - Getting started
 - Documentation
-- License
 -->
 
 ## Features & Functions
@@ -24,3 +23,7 @@ Todo:
 - [x] Auto/Smart tracking
 - [ ] Multi tracking
 - [x] Tracking page
+
+## License
+
+[Resiku](//resiku.net) is licensed under the GNU GPLv3 license. See [LICENSE](./LICENSE) for reference.

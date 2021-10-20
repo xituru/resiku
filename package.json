@@ -3,7 +3,12 @@
   "description": "Nuxt Website for Resiku",
   "version": "0.0.1",
   "private": true,
-  "license": "UNLICENSED",
+  "licenses": [
+    {
+      "type": "GNU GPLv3",
+      "url": "https://raw.githubusercontent.com/xituru/resiku-fe-nuxt/master/LICENSE"
+    }
+  ],
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
