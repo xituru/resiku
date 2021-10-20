@@ -22,7 +22,9 @@
           }}
         </nuxt-link>
         <br />
-        {{ getProp($config, 'site.description') }}
+        Platform digital untuk melacak lokasi terakhir paket secara cepat dan
+        akurat, support banyak ekspedisi, dilengkapi fitur multi tracking, auto
+        tracking, dan tracking page.
       </p>
     </div>
     <div>
