@@ -22,7 +22,7 @@ import TrackToTimeline from '~/mixins/track-to-timeline'
         (this as GetProp).getProp(this.$config, 'site.title'),
       ]
         .filter((title) => !!title)
-        .join(' - '),
+        .join(' | '),
     }
   },
   created() {

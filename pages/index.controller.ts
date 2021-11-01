@@ -8,11 +8,11 @@ import TrackToTimeline from '~/mixins/track-to-timeline'
   head() {
     return {
       title: [
-        (this as GetProp).getProp(this.$config, 'site.title'),
         (this as GetProp).getProp(this.$config, 'site.description'),
+        (this as GetProp).getProp(this.$config, 'site.title'),
       ]
         .filter((title) => !!title)
-        .join(' - '),
+        .join(' | '),
     }
   },
 })
