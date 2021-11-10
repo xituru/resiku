@@ -28,5 +28,19 @@ import IsArray from '~/mixins/is-array'
       expanded: !!this.$props.expand,
     }
   },
+  computed: {
+    shareUrl() {
+      const { protocol, hostname } = location
+      const { href } = this.$router.resolve({
+        name: 'tracking-awb-courier',
+        params: { courier: this.$props.code },
+        query: {
+          awb: this.$props.awb,
+        },
+      })
+
+      return `${protocol}//${hostname}${href}`
+    },
+  },
 })
 export default class ReceiptCard extends mixins(IsArray) {}
