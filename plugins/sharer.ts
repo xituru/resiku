@@ -435,8 +435,8 @@ class Sharer {
   urlSharer(sharer: IShare) {
     const p = sharer.params || ({} as IShare)
     const keys = Object.keys(p)
-    let i;
-      let str = keys.length > 0 ? '?' : ''
+    let i
+    let str = keys.length > 0 ? '?' : ''
 
     for (i = 0; i < keys.length; i++) {
       if (str !== '?') {
@@ -469,8 +469,8 @@ class Sharer {
 
       const newWindow = window.open(sharer.shareUrl, '', popParams)
 
-      if (window.focus) {
-        !!newWindow && !!newWindow.focus && newWindow.focus()
+      if (!!newWindow && !!newWindow.focus) {
+        newWindow.focus()
       }
     } else {
       window.location.href = sharer.shareUrl
@@ -485,11 +485,11 @@ function handleShare(e: Event) {
 }
 
 Vue.directive(ctx, {
-  bind (el) {
+  bind(el) {
     el.addEventListener('click', handleShare, false)
   },
 
-  unbind (el) {
+  unbind(el) {
     el.removeEventListener('click', handleShare, false)
   },
 })
