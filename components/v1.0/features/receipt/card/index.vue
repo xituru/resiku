@@ -11,7 +11,10 @@
         <div class="flex flex-row items-center">
           <div class="flex-1 flex-col flex">
             <label class="text-gray-400 text-xs capitalize">Nomor Resi</label>
-            <span class="font-semibold">{{ awb }}</span>
+            <span class="font-semibold">
+              <span>{{ awb }}</span>
+              <app-receipt-share :url="shareUrl" />
+            </span>
           </div>
           <button
             class="

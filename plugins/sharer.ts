@@ -68,7 +68,6 @@ const sharers = (elem: HTMLElement): { [k: string]: IShare } => ({
     params: {
       text: getValue(elem, 'title') + ' ' + getValue(elem, 'url'),
     },
-    isLink: true,
   },
   telegram: {
     shareUrl:

@@ -33,7 +33,7 @@ import IsArray from '~/mixins/is-array'
       const { protocol, hostname } = location
       const { href } = this.$router.resolve({
         name: 'tracking-awb-courier',
-        params: { courier: this.$props.code },
+        params: { courier: String(this.$props.code).toLowerCase() },
         query: {
           awb: this.$props.awb,
         },

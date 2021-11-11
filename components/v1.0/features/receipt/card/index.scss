@@ -1,4 +1,6 @@
 .card {
+  @apply overflow-visible;
+
   &-success {
     @apply ring-green-500;
 
