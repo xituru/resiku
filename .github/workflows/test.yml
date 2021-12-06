@@ -53,7 +53,7 @@ jobs:
 
   deploy-preview:
     needs: run-test
-    uses: xituru/resiku-fe-nuxt/.github/workflows/deploy-commit.yml@v1
+    uses: xituru/resiku-fe-nuxt/.github/workflows/deploy-commit.yml@master
     with:
       production: ${{ github.event_name != 'pull_request' }}
       site-title: ${{ secrets.RESIKU_TITLE }}
