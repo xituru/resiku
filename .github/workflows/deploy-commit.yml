@@ -6,18 +6,6 @@ on:
       production:
         required: true
         type: boolean
-      site-title:
-        required: true
-        type: string
-      site-description:
-        required: true
-        type: string
-      site-image:
-        required: true
-        type: string
-      site-url:
-        required: true
-        type: string
     secrets:
       graphql-url:
         required: true
@@ -35,6 +23,18 @@ on:
         required: true
       netlify-site-name:
         required: true
+      site-title:
+        required: true
+        type: string
+      site-description:
+        required: true
+        type: string
+      site-image:
+        required: true
+        type: string
+      site-url:
+        required: true
+        type: string
 
 jobs:
   deploy:
