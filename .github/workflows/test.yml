@@ -56,10 +56,10 @@ jobs:
     uses: xituru/resiku-fe-nuxt/.github/workflows/deploy-commit.yml@master
     with:
       production: ${{ github.event_name != 'pull_request' }}
-      site-title: ${{ secrets.RESIKU_TITLE }}
-      site-description: ${{ secrets.RESIKU_DESCRIPTION }}
-      site-image: ${{ secrets.RESIKU_IMAGE }}
-      site-url: ${{ secrets.RESIKU_URL }}
+      site-title: '${{ secrets.RESIKU_TITLE }}'
+      site-description: '${{ secrets.RESIKU_DESCRIPTION }}'
+      site-image: '${{ secrets.RESIKU_IMAGE }}'
+      site-url: '${{ secrets.RESIKU_URL }}'
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       graphql-url: ${{ secrets.RESIKU_GRAPHQL_URL }}
