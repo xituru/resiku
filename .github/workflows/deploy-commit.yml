@@ -25,16 +25,12 @@ on:
         required: true
       site-title:
         required: true
-        type: string
       site-description:
         required: true
-        type: string
       site-image:
         required: true
-        type: string
       site-url:
         required: true
-        type: string
 
 jobs:
   deploy:
