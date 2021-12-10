@@ -5,18 +5,34 @@ on:
     inputs:
       production:
         required: true
+        type: boolean
     secrets:
       GITHUB_TOKEN:
         required: true
-    env:
-      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
-      SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
-      SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
-      SITE_IMAGE: ${{ secrets.RESIKU_IMAGE }}
-      SITE_URL: ${{ secrets.RESIKU_URL }}
-      GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
-      GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
-      GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
+      GRAPHQL_HTTP_ENDPOINT:
+        required: true
+      SITE_TITLE:
+        required: true
+      SITE_DESCRIPTION:
+        required: true
+      SITE_IMAGE:
+        required: true
+      SITE_URL:
+        required: true
+      GOOGLE_ADS_ID:
+        required: true
+      GOOGLE_ANALYTICS_ID:
+        required: true
+      GOOGLE_GA4_ID:
+        required: true
+      NETLIFY_AUTH_TOKEN:
+        required: true
+      NETLIFY_SITE_ID:
+        required: true
+      NETLIFY_SITE_NAME:
+        required: true
+      GITHUB_TOKEN:
+        required: true
 
 jobs:
   deploy:
@@ -26,6 +42,16 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [14]
+
+    env:
+      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
+      SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
+      SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
+      SITE_IMAGE: ${{ secrets.RESIKU_IMAGE }}
+      SITE_URL: ${{ secrets.RESIKU_URL }}
+      GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
+      GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
+      GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
 
     steps:
       - name: Checkout 🛎
@@ -71,4 +97,4 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: Netlify preview
           state: success
-          target_url: https://${{ secrets.NETLIFY_SITE_NAME }}.netlify.app
+          target_url: https://${{ secrets.netlify-site-name }}.netlify.app
