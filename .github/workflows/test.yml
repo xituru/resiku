@@ -56,8 +56,9 @@ jobs:
     uses: xituru/resiku-fe-nuxt/.github/workflows/deploy-commit.yml@master
     with:
       production: ${{ github.event_name != 'pull_request' }}
+      netlify-site-name: reskdev-xtr
+    secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
-      netlify-site-name: ${{ secrets.NETLIFY_SITE_NAME }}
     env:
       GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
       SITE_TITLE: ${{ secrets.RESIKU_TITLE }}

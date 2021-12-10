@@ -5,10 +5,11 @@ on:
     inputs:
       production:
         required: true
-        type: boolean
-      github-token:
+      NETLIFY_SITE_NAME:
         required: true
-      netlify-site-name:
+        type: boolean
+    secrets:
+      GITHUB_TOKEN:
         required: true
     env:
       SITE_TITLE:
@@ -40,6 +41,8 @@ jobs:
         node: [14]
 
     steps:
+      - shell: bash
+
       - name: Checkout 🛎
         uses: actions/checkout@master
 
