@@ -56,16 +56,16 @@ jobs:
     uses: xituru/resiku-fe-nuxt/.github/workflows/deploy-commit.yml@master
     with:
       production: ${{ github.event_name != 'pull_request' }}
-    secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
-      graphql-url: ${{ secrets.RESIKU_GRAPHQL_URL }}
-      google-ads-id: ${{ secrets.RESIKU_GADS_ID }}
-      google-ua-id: ${{ secrets.RESIKU_UA_ID }}
-      google-ga4-id: ${{ secrets.RESIKU_GA4_ID }}
-      netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
       netlify-site-name: ${{ secrets.NETLIFY_SITE_NAME }}
-      site-title: ${{ secrets.RESIKU_TITLE }}
-      site-description: ${{ secrets.RESIKU_DESCRIPTION }}
-      site-image: ${{ secrets.RESIKU_IMAGE }}
-      site-url: ${{ secrets.RESIKU_URL }}
+    env:
+      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
+      SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
+      SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
+      SITE_IMAGE: ${{ secrets.RESIKU_IMAGE }}
+      SITE_URL: ${{ secrets.RESIKU_URL }}
+      GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
+      GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
+      GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

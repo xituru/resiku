@@ -6,45 +6,35 @@ on:
       production:
         required: true
         type: boolean
-    secrets:
-      graphql-url:
-        required: true
       github-token:
         required: true
-      google-ads-id:
-        required: true
-      google-ua-id:
-        required: true
-      google-ga4-id:
-        required: true
-      netlify-auth-token:
-        required: true
-      netlify-site-id:
-        required: true
+        type: string
       netlify-site-name:
         required: true
-      site-title:
+        type: string
+    env:
+      SITE_TITLE:
         required: true
-      site-description:
+      SITE_DESCRIPTION:
         required: true
-      site-image:
+      SITE_IMAGE:
         required: true
-      site-url:
+      SITE_URL:
+        required: true
+      GOOGLE_ADS_ID:
+        required: true
+      GOOGLE_ANALYTICS_ID:
+        required: true
+      GOOGLE_GA4_ID:
+        required: true
+      NETLIFY_AUTH_TOKEN:
+        required: true
+      NETLIFY_SITE_ID:
         required: true
 
 jobs:
   deploy:
     runs-on: ${{ matrix.os }}
-
-    env:
-      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.graphql-url }}
-      SITE_TITLE: ${{ inputs.site-title }}
-      SITE_DESCRIPTION: ${{ inputs.site-description }}
-      SITE_IMAGE: ${{ inputs.site-image }}
-      SITE_URL: ${{ inputs.site-url }}
-      GOOGLE_ADS_ID: ${{ secrets.google-ads-id }}
-      GOOGLE_ANALYTICS_ID: ${{ secrets.google-ua-id }}
-      GOOGLE_GA4_ID: ${{ secrets.google-ga4-id }}
 
     strategy:
       matrix:
@@ -84,18 +74,15 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './dist'
-          github-token: ${{ secrets.github-token }}
+          github-token: ${{ inputs.github-token }}
           deploy-message: 'Deploy from GitHub Actions'
           production-deploy: ${{ inputs.production }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.netlify-auth-token }}
-          NETLIFY_SITE_ID: ${{ secrets.netlify-site-id }}
         timeout-minutes: 1
 
       - name: Status check
         uses: Sibz/github-status-action@v1.1.6
         with:
-          authToken: ${{ secrets.github-token }}
+          authToken: ${{ inputs.github-token }}
           context: Netlify preview
           state: success
-          target_url: https://${{ secrets.netlify-site-name }}.netlify.app
+          target_url: https://${{ inputs.netlify-site-name }}.netlify.app
