@@ -10,7 +10,6 @@ on:
         required: true
       netlify-site-name:
         required: true
-        type: string
     env:
       SITE_TITLE:
         required: true
