@@ -5,7 +5,7 @@ on:
     inputs:
       production:
         required: true
-      NETLIFY_SITE_NAME:
+      netlify-site-name:
         required: true
         type: boolean
     secrets:
@@ -41,8 +41,6 @@ jobs:
         node: [14]
 
     steps:
-      - shell: bash
-
       - name: Checkout 🛎
         uses: actions/checkout@master
 
@@ -75,7 +73,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './dist'
-          github-token: ${{ inputs.github-token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
           production-deploy: ${{ inputs.production }}
         timeout-minutes: 1
@@ -83,7 +81,7 @@ jobs:
       - name: Status check
         uses: Sibz/github-status-action@v1.1.6
         with:
-          authToken: ${{ inputs.github-token }}
+          authToken: ${{ secrets.GITHUB_TOKEN }}
           context: Netlify preview
           state: success
           target_url: https://${{ inputs.netlify-site-name }}.netlify.app
