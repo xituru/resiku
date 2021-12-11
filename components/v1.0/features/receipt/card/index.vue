@@ -8,10 +8,24 @@
         </span>
       </h2>
       <div class="card-body">
-        <div class="flex flex-row items-center">
+        <div
+          class="
+            flex flex-col
+            space-y-3
+            sm:space-y-0 sm:flex-row sm:items-center
+          "
+        >
           <div class="flex-1 flex-col flex">
             <label class="text-gray-400 text-xs capitalize">Nomor Resi</label>
-            <span class="font-semibold">
+            <span
+              class="
+                font-semibold
+                flex
+                space-x-2
+                justify-between
+                sm:justify-start
+              "
+            >
               <span>{{ awb }}</span>
               <app-receipt-share :url="shareUrl" />
             </span>
@@ -32,12 +46,19 @@
           </button>
         </div>
         <div v-if="!!expanded">
-          <div class="flex flex-row space-x-2 mt-6">
-            <div class="w-1/3">
+          <div
+            class="
+              flex flex-col
+              space-y-3
+              sm:flex-row sm:space-x-2 sm:space-y-0
+              mt-6
+            "
+          >
+            <div class="w-full sm:w-1/3">
               <h3 class="font-semibold uppercase">{{ shipper }}</h3>
               <span class="text-gray-400">{{ origin }}</span>
             </div>
-            <div class="w-1/3 relative">
+            <div class="w-1/3 relative hidden sm:block">
               <div
                 class="
                   divider
@@ -72,7 +93,7 @@
               ></div>
               <icon-truck class="w-20 h-20 mx-auto z-10 relative" />
             </div>
-            <div class="w-1/3">
+            <div class="w-full sm:w-1/3">
               <h3 class="font-semibold uppercase">{{ receiver }}</h3>
               <span class="text-gray-400">{{ destination }}</span>
             </div>
