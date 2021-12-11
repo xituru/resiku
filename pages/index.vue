@@ -5,7 +5,7 @@
       title="Paketmu Belum Sampai Juga?"
       description="Dengan resiku sekarang kamu bisa lacak lokasi terakhir paketmu dengan akurat!"
     >
-      <app-input-track v-model="awb" />
+      <app-input-track v-model="awb" :loading="$apollo.loading" />
       <app-receipt-card
         v-if="isObject(Track)"
         class="mx-auto mt-10"
