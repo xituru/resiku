@@ -19,6 +19,8 @@ jobs:
         os: [ubuntu-latest]
         node: [14]
 
+    environment: ${{ github.event_name == 'push' && 'production' || 'commit' }}
+
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
