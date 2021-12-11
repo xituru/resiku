@@ -13,7 +13,11 @@ import Track from '~/graphql/queries/track.graphql'
         }
       },
       skip() {
-        return this.$data.skipQuery
+        return (
+          this.$data.skipQuery ||
+          this.$data.awb === '' ||
+          this.$data.awb === null
+        )
       },
     },
   },

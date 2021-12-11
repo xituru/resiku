@@ -43,4 +43,10 @@ import IsArray from '~/mixins/is-array'
     },
   },
 })
-export default class ReceiptCard extends mixins(IsArray) {}
+export default class ReceiptCard extends mixins(IsArray) {
+  get activities() {
+    return (
+      this.isArray(this.$props.checkpoints) ? this.$props.checkpoints : []
+    ).reverse()
+  }
+}

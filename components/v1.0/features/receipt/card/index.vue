@@ -78,9 +78,9 @@
             </div>
           </div>
           <comm-timeline
-            v-if="isArray(checkpoints)"
+            v-if="activities.length > 0"
             class="mt-5"
-            :activities="isArray(checkpoints) ? checkpoints : []"
+            :activities="activities"
           />
         </div>
       </div>

@@ -1,7 +1,11 @@
 <template>
   <div class="flex flex-col flex-nowrap">
-    <app-home-hero class="flex-1" :title="title">
-      <app-input-track v-if="!!!getProp($route, 'query.awb')" v-model="awb" />
+    <app-home-hero v-if="title" class="flex-1" :title="title">
+      <app-input-track
+        v-if="!!!getProp($route, 'query.awb')"
+        v-model="awb"
+        :loading="$apollo.loading"
+      />
       <app-receipt-card
         v-if="isObject(Track)"
         class="mx-auto mt-10"
@@ -16,6 +20,7 @@
         :destination="getProp(Track, 'detail.destination')"
       />
     </app-home-hero>
+    <app-home-hero v-else class="flex-1" title="Loading..."> </app-home-hero>
   </div>
 </template>
 

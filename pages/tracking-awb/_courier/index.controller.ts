@@ -54,11 +54,11 @@ export default class TrackingAwbCourierPage extends mixins(
             this.getProp(this.$data.Track, 'summary.courier.code'),
             this.getProp(this.$data.Track, 'summary.awb'),
           ].join(' ')}`
-        : 'Loading'
+        : null
     }
 
     return !!this.$data.Courier && this.isObject(this.$data.Courier)
       ? `Lacak Resi ${this.getProp(this.$data.Courier, 'name')}`
-      : 'Loading'
+      : null
   }
 }

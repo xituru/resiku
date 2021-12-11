@@ -11,6 +11,10 @@ import InputFn from '~/mixins/input-fn'
       type: String,
       default: 'Lacak',
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 export default class InputTrack extends mixins(InputFn) {
