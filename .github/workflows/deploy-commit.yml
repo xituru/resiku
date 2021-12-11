@@ -31,8 +31,6 @@ on:
         required: true
       NETLIFY_SITE_NAME:
         required: true
-      TOKEN:
-        required: true
 
 jobs:
   deploy:
@@ -86,7 +84,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './dist'
-          github-token: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
           production-deploy: ${{ inputs.production }}
         timeout-minutes: 1
