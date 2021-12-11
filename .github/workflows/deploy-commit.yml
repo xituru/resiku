@@ -41,16 +41,6 @@ jobs:
         os: [ubuntu-latest]
         node: [14]
 
-    env:
-      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
-      SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
-      SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
-      SITE_IMAGE: ${{ secrets.RESIKU_IMAGE }}
-      SITE_URL: ${{ secrets.RESIKU_URL }}
-      GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
-      GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
-      GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
-
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
@@ -79,6 +69,15 @@ jobs:
 
       - name: Build 📦
         run: yarn generate
+        env:
+          GRAPHQL_HTTP_ENDPOINT: ${{ secrets.GRAPHQL_HTTP_ENDPOINT }}
+          SITE_TITLE: ${{ secrets.SITE_TITLE }}
+          SITE_DESCRIPTION: ${{ secrets.SITE_DESCRIPTION }}
+          SITE_IMAGE: ${{ secrets.SITE_IMAGE }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+          GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          GOOGLE_GA4_ID: ${{ secrets.GOOGLE_GA4_ID }}
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
