@@ -3,21 +3,30 @@ name: deploy-commit
 on:
   workflow_call:
     inputs:
+      title:
+        required: true
+        type: string
+      description:
+        required: true
+        type: string
+      cover:
+        required: true
+        type: string
+      url:
+        required: true
+        type: string
+      github-token:
+        required: true
       production:
-        required: true
+        required: false
         type: boolean
+        default: false
+      deploy-message:
+        type: string
+        required: false
+        default: ''
     secrets:
-      TOKEN:
-        required: true
       GRAPHQL_HTTP_ENDPOINT:
-        required: true
-      SITE_TITLE:
-        required: true
-      SITE_DESCRIPTION:
-        required: true
-      SITE_IMAGE:
-        required: true
-      SITE_URL:
         required: true
       GOOGLE_ADS_ID:
         required: true
@@ -34,17 +43,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
-
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
-
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.5.1
         with:
@@ -64,37 +63,31 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install dependencies 👨🏻‍💻
-        run: yarn
-
-      - name: Build 📦
-        run: yarn generate
+      - name: Deploy to Netlify
+        uses: jsmrcaga/action-netlify-deploy@v1.7.2
         env:
+          SITE_TITLE: ${{ inputs.title }}
+          SITE_DESCRIPTION: ${{ inputs.description }}
+          SITE_IMAGE: ${{ inputs.cover }}
+          SITE_URL: ${{ inputs.url }}
           GRAPHQL_HTTP_ENDPOINT: ${{ secrets.GRAPHQL_HTTP_ENDPOINT }}
-          SITE_TITLE: ${{ secrets.SITE_TITLE }}
-          SITE_DESCRIPTION: ${{ secrets.SITE_DESCRIPTION }}
-          SITE_IMAGE: ${{ secrets.SITE_IMAGE }}
-          SITE_URL: ${{ secrets.SITE_URL }}
           GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
           GOOGLE_GA4_ID: ${{ secrets.GOOGLE_GA4_ID }}
-
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './dist'
-          github-token: ${{ secrets.TOKEN }}
-          deploy-message: 'Deploy from GitHub Actions'
-          production-deploy: ${{ inputs.production }}
-        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+          NETLIFY_DEPLOY_MESSAGE: ${{ inputs.deploy-message }}
+          NETLIFY_DEPLOY_TO_PROD: ${{ inputs.production }}
+          install_command: yarn
+          build_directory: dist
+          build_command: yarn generate
+          deploy_alias: ${{ github.run_id }}
 
       - name: Status check
         uses: Sibz/github-status-action@v1.1.6
         with:
-          authToken: ${{ secrets.TOKEN }}
+          authToken: ${{ inputs.github-token }}
           context: Netlify preview
           state: success
-          target_url: https://${{ secrets.NETLIFY_SITE_NAME }}.netlify.app
+          target_url: https://${{ github.run_id }}--${{ secrets.NETLIFY_SITE_NAME }}.netlify.app
