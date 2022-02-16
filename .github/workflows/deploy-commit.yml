@@ -16,6 +16,7 @@ on:
         required: true
         type: string
       github-token:
+        type: string
         required: true
       production:
         required: false
@@ -43,7 +44,17 @@ on:
 
 jobs:
   deploy:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
     steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.5.1
         with:
