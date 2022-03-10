@@ -25,6 +25,16 @@ jobs:
     uses: xituru/resiku-fe-nuxt/.github/workflows/deploy.yml@master
     secrets:
       SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
+      SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
+      SITE_IMAGE: ${{ secrets.RESIKU_COVER_IMAGE }}
+      SITE_URL: ${{ secrets.RESIKU_URL }}
+      GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
+      GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
+      GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
+      GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      NETLIFY_SITE_NAME: ${{ secrets.NETLIFY_SITE_NAME }}
 
   merge:
     if: github.event_name == 'pull_request' && github.event.action != 'closed' && github.actor == 'dependabot[bot]'
