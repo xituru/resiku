@@ -10,7 +10,7 @@ on:
       deploy-message:
         type: string
         required: false
-        default: ''
+        default: 'Deploy on Github Actions'
     secrets:
       SITE_TITLE:
         required: true
@@ -89,7 +89,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: ${{ inputs.deploy-message }}
           production-deploy: ${{ inputs.production }}
-          alias: ${{ github.run_id }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -101,4 +100,4 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: Netlify preview
           state: success
-          target_url: https://${{ github.run_id }}--${{ secrets.NETLIFY_SITE_NAME }}.netlify.app
+          target_url: https://${{ secrets.NETLIFY_SITE_NAME }}.netlify.app
