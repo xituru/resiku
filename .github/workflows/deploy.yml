@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
+        node: 16
 
     environment: ${{ (inputs.production && 'Production') || 'Development' }}
 
@@ -31,6 +31,7 @@ jobs:
         uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
+          check-latest: true
 
       - name: Get yarn cache directory path 🛠
         id: yarn-cache-dir-path
@@ -65,6 +66,7 @@ jobs:
           build_directory: dist
           build_command: yarn generate
           deploy_alias: ${{ github.run_id }}
+          node_version: ${{ matrix.node }}
 
       - name: Status check
         uses: Sibz/github-status-action@v1.1.6
