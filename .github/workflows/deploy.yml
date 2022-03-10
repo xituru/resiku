@@ -1,23 +1,8 @@
-name: deploy-commit
+name: 'Build & Deploy'
 
 on:
   workflow_call:
     inputs:
-      title:
-        required: true
-        type: string
-      description:
-        required: true
-        type: string
-      cover:
-        required: true
-        type: string
-      url:
-        required: true
-        type: string
-      github-token:
-        type: string
-        required: true
       production:
         required: false
         type: boolean
@@ -26,21 +11,6 @@ on:
         type: string
         required: false
         default: ''
-    secrets:
-      GRAPHQL_HTTP_ENDPOINT:
-        required: true
-      GOOGLE_ADS_ID:
-        required: true
-      GOOGLE_ANALYTICS_ID:
-        required: true
-      GOOGLE_GA4_ID:
-        required: true
-      NETLIFY_AUTH_TOKEN:
-        required: true
-      NETLIFY_SITE_ID:
-        required: true
-      NETLIFY_SITE_NAME:
-        required: true
 
 jobs:
   deploy:
@@ -50,6 +20,8 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [14]
+
+    environment: ${{ (inputs.production && 'Production') || 'Development' }}
 
     steps:
       - name: Checkout 🛎
@@ -77,14 +49,14 @@ jobs:
       - name: Deploy to Netlify
         uses: jsmrcaga/action-netlify-deploy@v1.7.2
         env:
-          SITE_TITLE: ${{ inputs.title }}
-          SITE_DESCRIPTION: ${{ inputs.description }}
-          SITE_IMAGE: ${{ inputs.cover }}
-          SITE_URL: ${{ inputs.url }}
-          GRAPHQL_HTTP_ENDPOINT: ${{ secrets.GRAPHQL_HTTP_ENDPOINT }}
-          GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
-          GOOGLE_GA4_ID: ${{ secrets.GOOGLE_GA4_ID }}
+          SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
+          SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
+          SITE_IMAGE: ${{ secrets.RESIKU_COVER_IMAGE }}
+          SITE_URL: ${{ secrets.RESIKU_URL }}
+          GRAPHQL_HTTP_ENDPOINT: ${{ secrets.RESIKU_GRAPHQL_URL }}
+          GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
+          GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -98,7 +70,7 @@ jobs:
       - name: Status check
         uses: Sibz/github-status-action@v1.1.6
         with:
-          authToken: ${{ inputs.github-token }}
+          authToken: ${{ secrets.GITHUB_TOKEN }}
           context: Netlify preview
           state: success
           target_url: https://${{ github.run_id }}--${{ secrets.NETLIFY_SITE_NAME }}.netlify.app

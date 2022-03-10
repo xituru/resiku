@@ -1,0 +1,32 @@
+name: 'Pull Request'
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - main
+      - master
+
+permissions:
+  pull-requests: write
+  contents: write
+  repository-projects: write
+
+jobs:
+  test:
+    uses: xituru/resiku-fe-nuxt/.github/workflows/test.yml@master
+
+  preview:
+    needs: [test]
+    uses: xituru/resiku-fe-nuxt/.github/workflows/deploy.yml@master
+
+  merge:
+    if: github.event_name == 'pull_request' && github.event.action != 'closed' && github.actor == 'dependabot[bot]'
+    needs: [test, preview]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          github-token: ${{ secrets.GITHUB_TOKEN }}
