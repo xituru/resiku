@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v2.5.1
         with:
           node-version: ${{ matrix.node }}
-          check-latest: true
 
       - name: Get yarn cache directory path 🛠
         id: yarn-cache-dir-path
