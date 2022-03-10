@@ -23,6 +23,8 @@ jobs:
   preview:
     needs: [test]
     uses: xituru/resiku-fe-nuxt/.github/workflows/deploy.yml@master
+    secrets:
+      SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
 
   merge:
     if: github.event_name == 'pull_request' && github.event.action != 'closed' && github.actor == 'dependabot[bot]'

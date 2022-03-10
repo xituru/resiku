@@ -11,6 +11,10 @@ on:
         type: string
         required: false
         default: ''
+    secrets:
+      SITE_TITLE:
+        required: true
+        type: string
 
 jobs:
   deploy:
@@ -20,8 +24,6 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: ['16']
-
-    environment: ${{ (inputs.production && 'Production') || 'Development' }}
 
     steps:
       - name: Checkout 🛎
@@ -52,7 +54,7 @@ jobs:
       - name: Build 📦
         run: yarn generate
         env:
-          SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
+          SITE_TITLE: ${{ secrets.SITE_TITLE }}
           SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
           SITE_IMAGE: ${{ secrets.RESIKU_COVER_IMAGE }}
           SITE_URL: ${{ secrets.RESIKU_URL }}
