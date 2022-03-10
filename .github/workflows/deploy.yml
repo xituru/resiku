@@ -14,7 +14,6 @@ on:
     secrets:
       SITE_TITLE:
         required: true
-        type: string
 
 jobs:
   deploy:
