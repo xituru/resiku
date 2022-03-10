@@ -46,8 +46,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Deploy to Netlify
-        uses: jsmrcaga/action-netlify-deploy@v1.7.2
+      - name: Build 📦
+        run: yarn generate
         env:
           SITE_TITLE: ${{ secrets.RESIKU_TITLE }}
           SITE_DESCRIPTION: ${{ secrets.RESIKU_DESCRIPTION }}
@@ -57,18 +57,21 @@ jobs:
           GOOGLE_ADS_ID: ${{ secrets.RESIKU_GADS_ID }}
           GOOGLE_ANALYTICS_ID: ${{ secrets.RESIKU_UA_ID }}
           GOOGLE_GA4_ID: ${{ secrets.RESIKU_GA4_ID }}
+
+      - name: Deploy to Netlify 🚀
+        uses: nwtgck/actions-netlify@v1.2
         with:
+          publish-dir: './dist'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: ${{ inputs.deploy-message }}
+          production-deploy: ${{ inputs.production }}
+          alias: ${{ github.run_id }}
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_MESSAGE: ${{ inputs.deploy-message }}
-          NETLIFY_DEPLOY_TO_PROD: ${{ inputs.production }}
-          install_command: yarn
-          build_directory: dist
-          build_command: yarn generate
-          deploy_alias: ${{ github.run_id }}
-          node_version: ${{ matrix.node }}
+        timeout-minutes: 1
 
-      - name: Status check
+      - name: Status check ✅
         uses: Sibz/github-status-action@v1.1.6
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
