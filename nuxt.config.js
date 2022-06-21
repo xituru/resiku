@@ -35,7 +35,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/sharer'],
+  plugins: ['~/plugins/sharer', '~/plugins/apollo-overrides'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [

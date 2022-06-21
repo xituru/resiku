@@ -3,33 +3,28 @@ import Vue from 'vue'
 import Track from '~/graphql/queries/track.graphql'
 
 @Component({
-  apollo: {
-    Track: {
-      query: Track,
-      variables() {
-        return {
-          awb: this.$data.awb,
-          courier: this.$data.courier,
-        }
-      },
-      skip() {
-        return (
-          this.$data.skipQuery ||
-          this.$data.awb === '' ||
-          this.$data.awb === null
-        )
-      },
-    },
-  },
   data() {
     return {
       awb: '',
       courier: null,
       skipQuery: true,
+      Track: null,
     }
   },
   mounted() {
     this.$data.skipQuery = false
+  },
+  watch: {
+    async awb(n1, n2) {
+      if (n1 === n2) return
+      const { courier, awb } = this.$data
+      const res = await this.$apollo.query({
+        query: Track,
+        variables: { awb, courier },
+      })
+
+      this.$data.Track = res.data.Track
+    },
   },
 })
 export class TrackingService extends Vue {
