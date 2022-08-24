@@ -88,6 +88,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
     '@nuxtjs/google-gtag',
+    '@nuxtjs/google-adsense',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -157,5 +158,8 @@ export default {
         },
       },
     ],
+  },
+  'google-adsense': {
+    id: process.env.GOOGLE_ADSENSE_ID,
   },
 }
