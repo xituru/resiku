@@ -29,6 +29,13 @@ export default {
         href: process.env.SITE_URL,
       },
     ],
+    script: [
+      {
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+        'data-ad-client': process.env.GOOGLE_ADSENSE_ID,
+        async: true,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -88,7 +95,6 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
     '@nuxtjs/google-gtag',
-    '@nuxtjs/google-adsense',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -158,8 +164,5 @@ export default {
         },
       },
     ],
-  },
-  'google-adsense': {
-    id: process.env.GOOGLE_ADSENSE_ID,
   },
 }
