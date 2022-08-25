@@ -34,6 +34,8 @@ on:
         required: true
       NETLIFY_SITE_NAME:
         required: true
+      GOOGLE_ADSENSE_ID:
+        required: true
 
 jobs:
   deploy:
@@ -81,6 +83,7 @@ jobs:
           GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
           GOOGLE_GA4_ID: ${{ secrets.GOOGLE_GA4_ID }}
+          GOOGLE_ADSENSE_ID: ${{ secrets.GOOGLE_ADSENSE_ID }}
 
       - name: Deploy to Netlify 🚀
         uses: nwtgck/actions-netlify@v1.2
