@@ -22,6 +22,7 @@ export default class Footer extends mixins(GetProp) {
       ? `/tracking-awb/${String(courierCode).toLowerCase()}`
       : '/'
   }
+
   async mounted() {
     const legals = (await this.$content('agreements')
       .only(['title', 'slug'])
