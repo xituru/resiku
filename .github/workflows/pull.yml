@@ -7,11 +7,6 @@ on:
       - main
       - master
 
-permissions:
-  pull-requests: write
-  contents: write
-  repository-projects: write
-
 jobs:
   test:
     uses: xituru/resiku-fe-nuxt/.github/workflows/test.yml@master
@@ -42,4 +37,4 @@ jobs:
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
           target: minor
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.MAINTAINER_TOKEN }}
