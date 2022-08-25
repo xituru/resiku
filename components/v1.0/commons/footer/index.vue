@@ -42,15 +42,13 @@
       <a class="link link-hover">Jobs</a>
       <a class="link link-hover">Press kit</a>
     </div>
-    <div v-if="legals.length">
+    <div>
       <span class="footer-title">Legal</span>
-      <nuxt-link
-        v-for="legal in legals"
-        :key="legal.slug"
-        class="link link-hover"
-        :to="`/agreements/${legal.slug}`"
-      >
-        {{ legal.title }}
+      <nuxt-link class="link link-hover" to="/agreements/privacy-policy">
+        Kebijakan Privasi
+      </nuxt-link>
+      <nuxt-link class="link link-hover" to="/agreements/terms-of-service">
+        Ketentuan Layanan
       </nuxt-link>
     </div>
   </footer>

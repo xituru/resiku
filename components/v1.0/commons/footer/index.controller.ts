@@ -15,20 +15,9 @@ import GetProp from '~/mixins/get-prop'
   },
 })
 export default class Footer extends mixins(GetProp) {
-  legals: { title: string; slug: string }[] = []
-
   generateSingleTrackingUrl(courierCode: string) {
     return typeof courierCode === 'string'
       ? `/tracking-awb/${String(courierCode).toLowerCase()}`
       : '/'
-  }
-
-  async mounted() {
-    const legals = (await this.$content('agreements')
-      .only(['title', 'slug'])
-      .sortBy('title')
-      .fetch()) as unknown as { title: string; slug: string }[]
-
-    this.legals = legals || []
   }
 }
