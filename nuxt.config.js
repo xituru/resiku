@@ -39,7 +39,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/styles/unstyled.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/sharer', '~/plugins/apollo-overrides'],
@@ -95,6 +95,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
     '@nuxtjs/google-gtag',
+    // https://content.nuxtjs.org/v1/
+    '@nuxt/content',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -122,10 +124,6 @@ export default {
 
   colorMode: {
     classSuffix: '',
-  },
-
-  tailwindcss: {
-    cssPath: '~/assets/styles/main.scss',
   },
 
   publicRuntimeConfig: {

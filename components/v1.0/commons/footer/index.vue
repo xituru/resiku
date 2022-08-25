@@ -1,14 +1,6 @@
 <template>
   <footer
-    class="
-      p-10
-      footer
-      text-base-content
-      bg-gray-100
-      dark:bg-gray-900
-      space-y-5
-      md:space-y-0
-    "
+    class="p-10 space-y-5 bg-gray-100 footer text-base-content dark:bg-gray-900 md:space-y-0"
   >
     <div class="sm:max-w-sm">
       <div class="flex items-center">
@@ -50,12 +42,16 @@
       <a class="link link-hover">Jobs</a>
       <a class="link link-hover">Press kit</a>
     </div>
-    <div v-if="false">
-      <!-- TODO: activate this when legal information is ready -->
+    <div v-if="legals.length">
       <span class="footer-title">Legal</span>
-      <a class="link link-hover">Terms of use</a>
-      <a class="link link-hover">Privacy policy</a>
-      <a class="link link-hover">Cookie policy</a>
+      <nuxt-link
+        v-for="legal in legals"
+        :key="legal.slug"
+        class="link link-hover"
+        :to="`/agreements/${legal.slug}`"
+      >
+        {{ legal.title }}
+      </nuxt-link>
     </div>
   </footer>
 </template>

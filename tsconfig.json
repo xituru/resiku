@@ -20,7 +20,8 @@
       "@nuxtjs/axios",
       "@nuxtjs/color-mode",
       "@types/node",
-      "vue-apollo/types"
+      "vue-apollo/types",
+      "@nuxt/content"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
