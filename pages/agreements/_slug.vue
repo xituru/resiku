@@ -5,7 +5,7 @@
     <div>
       <h1 class="text-4xl font-semibold">{{ page.title }}</h1>
       <nuxt-content
-        class="py-5 mx-auto text-sm prose prose-lg max-w-none dark:text-gray-300"
+        class="py-5 mx-auto text-sm prose prose-lg max-w-none dark:text-gray-300 prose-yellow"
         :document="page"
       ></nuxt-content>
     </div>
