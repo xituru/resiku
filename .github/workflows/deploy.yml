@@ -86,7 +86,7 @@ jobs:
           GOOGLE_ADSENSE_ID: ${{ secrets.GOOGLE_ADSENSE_ID }}
 
       - name: Deploy to Netlify 🚀
-        uses: nwtgck/actions-netlify@v1.2
+        uses: nwtgck/actions-netlify@v2.0
         with:
           publish-dir: dist
           deploy-message: ${{ inputs.deploy-message }}
